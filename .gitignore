@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Playwright artifacts — regenerated on every run, never worth committing
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Environment/secrets — NEVER commit these
+.env
+
+# Auth state — contains real session cookies, treat as sensitive
+auth.json
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
