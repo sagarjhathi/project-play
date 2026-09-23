@@ -28,3 +28,8 @@ test('shows the dashboard3', async ({ page }) => {
    await page.goto('https://the-internet.herokuapp.com/secure'); // straight to secure, no login steps
   await expect(page.locator('h2')).toHaveText(' Secure Area');
 });
+
+test('homepage looks correct', async ({ page }) => {
+  await page.goto('https://the-internet.herokuapp.com/');
+  await expect(page).toHaveScreenshot('homepage.png');
+});

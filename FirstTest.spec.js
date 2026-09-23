@@ -21,16 +21,26 @@ let homePage;
 for(const term of searchTerms){
 
 
-  test(`searche for ${term}`, async ({ page }) => {
-  // const homePage = new AmazonHomePage(page);
-  // await homePage.goto();
-  await homePage.search(term);
+//   test(`searche for ${term}`, async ({ page }) => {
+//   // const homePage = new AmazonHomePage(page);
+//   // await homePage.goto();
+//   await homePage.search(term);
 
-  const resultsPage = new AmazonResultsPage(page);
-  const firstResultText = await resultsPage.getFirstResultText();
-  console.log(firstResultText);
+//   const resultsPage = new AmazonResultsPage(page);
+//   const firstResultText = await resultsPage.getFirstResultText();
+//   console.log(firstResultText);
 
-  await expect(page).toHaveTitle(new RegExp(term));
+//   await expect(page).toHaveTitle(new RegExp(term));
+// });
+
+test(`search for ${term}`, async ({ page }) => {
+  await test.step('Search for a product', async () => {
+    await homePage.search(term); // homePage already navigated in beforeEach
+  });
+
+  await test.step('Verify results', async () => {
+    await expect(page).toHaveTitle(new RegExp(term));
+  });
 });
 
 }
